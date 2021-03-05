@@ -2,8 +2,8 @@ $(()=>{
   let $width = $('#width'),
       $height=$('#height'),
       $btncal=$('#calc'),
-      $perimeter=$('#$perimeter'),
-      $area=$('#$area');
+      $perimeter=$('#perimeter'),
+      $area=$('#area');
 
 $btncal.click(()=>{
   let w=Number($width.val()),
@@ -11,7 +11,7 @@ $btncal.click(()=>{
 
 
   let p=(w+h)*2,
-      a=w+h;
+      a=w*h;
 //解决浮点舍入误差的问题
 function roundFractional(x,n){
   return Math.round(x*Math.pow(10,n))/Math.pow(10,n);
