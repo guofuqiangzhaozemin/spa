@@ -16,7 +16,7 @@ $width.keypress(()=>{
   }
 
 });
-$height.keypress(()=>{
+$height.keypress((e)=>{
   let key = e.key,
       val = e.target.value,
       pos = e.target.selectionStart;
@@ -25,7 +25,7 @@ $height.keypress(()=>{
     e.preventDefault();
   }
 });
-$width.focusout(()=>{
+$width.focusout((e)=>{
   if(!validate($width,$widthValidate)){
     $width.select();
   };
