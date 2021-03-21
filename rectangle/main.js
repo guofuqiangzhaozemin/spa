@@ -6,6 +6,36 @@ $(()=>{
       $widthValidate=$("#width-validate"),
       $heightValidate=$("#height-validate"),
       $area=$('#area');
+$width.keypress(()=>{
+  let key = e.key,
+      val = e.target.value,
+      pos = e.target.selectionStart;
+  val=val.slice(0,pos)+key+val.slice(pos,val.length);
+  if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(val)){
+    e.preventDefault();
+  }
+
+});
+$height.keypress(()=>{
+  let key = e.key,
+      val = e.target.value,
+      pos = e.target.selectionStart;
+  val=val.slice(0,pos)+key+val.slice(pos,val.length);
+  if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(val)){
+    e.preventDefault();
+  }
+});
+$width.focusout(()=>{
+  if(!validate($width,$widthValidate)){
+    $width.select();
+  };
+});
+$height.focusout(()=>{
+  if(!validate($height,$heightValidate)){
+    $height.select();
+  };
+});
+
 
 $btncal.click(()=>{
   let w=Number($width.val()),
