@@ -6,12 +6,12 @@ $(()=>{
       $widthValidate=$("#width-validate"),
       $heightValidate=$("#height-validate"),
       $area=$('#area');
-$width.keypress(()=>{
+$width.keypress((e)=>{
   let key = e.key,
       val = e.target.value,
       pos = e.target.selectionStart;
   val=val.slice(0,pos)+key+val.slice(pos,val.length);
-  if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(val)){
+  if(!/^(0|[1-9]\d*)(\.\d+)?((e|E)(\+|-)?\d+)?$/.test(val)){
     e.preventDefault();
   }
 
@@ -21,7 +21,7 @@ $height.keypress((e)=>{
       val = e.target.value,
       pos = e.target.selectionStart;
   val=val.slice(0,pos)+key+val.slice(pos,val.length);
-  if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(val)){
+  if(!/^(0|[1-9]\d*)(\.\d+)?((e|E)(\+|-)?\d+)?$/.test(val)){
     e.preventDefault();
   }
 });
