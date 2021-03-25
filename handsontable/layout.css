@@ -1,0 +1,21 @@
+body,html {
+  margin:0;
+  padding:0;
+  background-color: white;
+  height:100%;
+  width:100;
+}
+p{
+  margin-left:400px;
+}
+
+#example{
+  margin-left:200px;
+}
+
+#main{
+  width:80%;
+  height:400px;
+  margin:30px auto;
+}
+
