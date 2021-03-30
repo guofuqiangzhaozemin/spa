@@ -1,11 +1,27 @@
 $(()=>{
   let $width = $('#width'),
       $height=$('#height'),
-      $btncal=$('#calc'),
+      //$btncal=$('#calc'),
+      $form=$('#main'),
       $perimeter=$('#perimeter'),
       $widthValidate=$("#width-validate"),
       $heightValidate=$("#height-validate"),
       $area=$('#area');
+
+      $forkMeGH.show("http://www.baidu.com")
+
+$form.submit((e)=>{
+  e.preventDefault();
+  let w=Number($width.val()),
+      h=Number($height.val());
+  let p=(w+h)*2,
+      a=w*h;
+
+  $perimeter.val(p);
+  $area.val(a);
+})
+
+/*
 $width.keypress((e)=>{
   let key = e.key,
       val = e.target.value,
@@ -93,3 +109,5 @@ function validate(input,output){
 
   return true;
 }
+
+*/

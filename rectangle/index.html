@@ -6,24 +6,24 @@
   <link rel='stylesheet' href='./layout.css'>
 </head>
 <body>
-<div id="main">
+<form id="main">
   <lable>宽度:</lable>
-  <input type="text" id="width"><span>*</span>
+  <input type="number" id="width" min="0" autofocus required step="0.01"><span></span>
   <br>
   <div id="width-validate"></div>
   <lable>高度:</lable>
-  <input type="text" id="height"><span>*</span>
+  <input type="number" id="height" min="0" required step="0.01"><span></span>
   <br>
   <div id="height-validate"></div>
   <lable></lable>
-  <input type="button" id="calc" value="计算">
+  <input type="submit" id="calc" value="计算">
   <br>
   <lable>周长:</lable>
   <input type="text" id="perimeter" disabled>
   <br>
   <lable>面积:</lable>
   <input type="text" id="area" disabled>
-</div>
+</form>
 <script src='//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
 <script src='./main.js'></script>
 <script src="https://cdn.jsdelivr.net/gh/wangding/i@gh-pages/js/fork-me-github.js"></script>

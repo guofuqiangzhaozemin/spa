@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>timer button</title>
+  <link rel="stylesheet" href="./timer-button.css">
+</head>
+<body>  
+<input type="button" id="add" value="添加定时器按钮">
+<input type="button" id="del" value="删除定时器按钮">
+<hr>
+<div id="test"></div>
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="./timer-button.js"></script>
+<script>
+$(()=>{
+  let $btnAdd=$('#add'),
+      $btnDel=$('#del');
+  $btnAdd.click(()=>{
+      let btn=new timerBtn();
+      btn.show({
+          container:'#test',
+          title:'发送验证码',
+          onClick:function(){console.log('timer button onclick')}
+      });
+  })
+  $btnDel.click(()=>{
+      $timerBtn.destroy();
+  })
+})
+  </script>
+</body>
+</html>
