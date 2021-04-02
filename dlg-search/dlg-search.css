@@ -1,0 +1,78 @@
+
+.notepad-dlg-search {
+  z-index: 10;
+}
+
+.notepad-dlg-search .dialogbox {
+  margin-top:20px;
+  height: 200px;
+  width: 500px;
+  border:1px solid white;
+  background-color:#eee;
+}
+
+.notepad-dlg-titlebar{
+  margin-top:-16px;
+  height:40px;
+  background-color:white;
+
+}
+
+.notepad-dlg-search .main {
+  height: 132px;
+  padding: 6px;
+}
+
+.title{
+  color:#aaa;
+  margin-left:10px;
+  padding-top:10px;
+}
+
+.close-btn{
+  float:right;
+  padding-right:10px;
+  margin-top:-40px;
+  color:#aaa;
+  font-size:20px;
+}
+
+.notepad-dlg-search .main .txt-content {
+  box-sizing: border-box;
+  height: 26px;
+  margin: 10px;
+  width: 224px;
+}
+
+.notepad-dlg-search .main .btn-search {
+  height:30px;
+  position: absolute;
+  right: 40px;
+  top: 52px;
+}
+
+.notepad-dlg-search .main .btn-cancel {
+  width:100px;
+  position: absolute;
+  right: 40px;
+  top:90px;
+}
+
+.notepad-dlg-search .main .search-direction {
+  border: 1px solid #dcdcdc;
+  box-sizing:border-box;
+  height: 52px;
+  left: 172px;
+  padding: 10px 5px;
+  position: absolute;
+  top: 100px;
+  width: 170px;
+}
+
+.notepad-dlg-search .main input[value="down"] {
+  margin-left: 5px;
+}
+
+.notepad-dlg-search .main input[value="capital-sense"] {
+  margin-top: 30px;
+}
