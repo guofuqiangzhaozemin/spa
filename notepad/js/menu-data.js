@@ -1,3 +1,14 @@
+/* global np,
+          $dlgAbout,
+          $menubar,
+          $statusBar,
+          $editor,
+          $dlgSave,
+          $dlgFont,
+          $searchDlg,
+          $dlgReplace,
+          $dlgGoto: true */
+/* eslint no-console: ["error", { allow: ["log"]  }] */
 np.menuData = [{
   title: '文件(F)',
   menuItems: [{
@@ -99,25 +110,17 @@ np.menuData = [{
     title: '查找下一个(N)',
     shortcut: 'F3',
     enabled: false,
-    handler: function() { console.log('查找下一个(N) menu clicked!'); }
+    handler: null,
   }, {
     title: '替换(R)...',
     shortcut: 'Ctrl+H',
     enabled: true,
-    handler: () => $dlgReplace.show({
-      searchHandler: (e) => $editor.search(e),
-      replaceHandler: (e) => $editor.replace(e),
-      replaceAllHandler: (e) => $editor.replaceAll(e)
-    })
+    handler: null,
   }, {
     title: '转到(G)...',
     shortcut: 'Ctrl+G',
     enabled: true,
-    handler: () => $dlgGoto.show({
-      lineNum: $editor.getRow(),
-      totalLine: $editor.getTotalLn(),
-      gotoHandler: (lineNum) => $editor.gotoLn(lineNum)
-    })
+    handler:null, 
   }, {
     title: 'hr',
     shortcut: '',
@@ -143,7 +146,7 @@ np.menuData = [{
     shortcut: '',
     enabled: true,
     handler: null,
-   handler: () => {
+   /*handler: () => {
       np.bWrap = !np.bWrap;
       localStorage.setItem('bWrap', np.bWrap);
 
@@ -162,7 +165,7 @@ np.menuData = [{
 
       $menubar.checked(2, 0, np.bWrap);
       $editor.setWrap(np.bWrap);
-    }
+    }*/
   }, {
     title: '字体(F)...',
     shortcut: '',
@@ -184,9 +187,9 @@ np.menuData = [{
     enabled: true,
     handler: () => {
       np.bShowStatusBar = !(typeof(np.bShowStatusBar) === 'boolean' ?
-        np.bShowStatusBar :
+        np.bShowStatusBar  :
         np.bShowStatusBar === 'true') ;
-      localStorage.setItem('bShowStatusBar', np.bShowStatusBar);
+      localStorage.setItem('bShowStatusBar', 'true');
       $statusBar.display(np.bShowStatusBar);
       $menubar.checked(3, 0, np.bShowStatusBar);
       $editor.resize(np.bShowStatusBar);
@@ -200,13 +203,12 @@ np.menuData = [{
     title: '查看帮助(H)',
     shortcut: '',
     enabled: true,
-    handler: () => window.open('https://cn.bing.com/search?q=获取有关+windows+10+中的记事本的帮助', '_blank')
+    handler: null,
   }, {
     title: '关于记事本(A)',
     shortcut: '',
     enabled: true,
     handler: null,
-    //handler: () => $dlgAbout.show()
   }],
   width: '166px',
   left: '216px'

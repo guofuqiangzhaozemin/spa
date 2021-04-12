@@ -114,7 +114,7 @@ let $editor = (() => {
     cfg.posHandler(getRow(), getCol());
   };
 
-  let bingSearch = () => {
+ /* let bingSearch = () => {
     let start = $textArea[0].selectionStart,
         end   = $textArea[0].selectionEnd;
 
@@ -124,7 +124,7 @@ let $editor = (() => {
       let subStr = $textArea.val().substring(start, end);
       window.open('https://cn.bing.com/search?q=' + subStr, '_blank');
     }
-  };
+  };*/
 
   let search = (srch) => {
     let content  = $textArea.val(),
@@ -182,7 +182,7 @@ let $editor = (() => {
     selectAll,
     insertDataTime,
     gotoLn,
-    bingSearch,
+    //bingSearch,
     search,
     setFont
   };

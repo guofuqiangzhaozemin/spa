@@ -13,7 +13,7 @@ let $statusBar = (() => {
       cfg       = {row: 1, col: 1};
 
 
-  let display = (isVisable) => $stBar.css('display', isVisable ?'none' : 'block');
+  let display = (isVisable) => $stBar.css('display', isVisable ?'block' : 'none');
 
   let setRowCol = (r, c) => $rowCol.html(strRowCol.replace('x', r).replace('y', c));
 

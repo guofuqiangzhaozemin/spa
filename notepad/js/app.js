@@ -18,7 +18,7 @@ np.fontSize       = localStorage.getItem('fontSize') || '16';          // 默认
 np.fileName       = '无标题';   // 默认文件名
 np.hasChanged     = false;      // 文档是否发生变化
 
-np.saveFile = () => {
+/*np.saveFile = () => {
   const a = document.createElement('a'),
         c = $editor.getContent(),
         b = new Blob([c], { type: 'plain/text' });
@@ -52,7 +52,7 @@ np.newFile = () => {
   $('title').text('无标题 - 记事本');
   np.hasChanged = false;
 };
-
+*/
 np.setFontStyle = (item, style) => {
   let conf = {
     '常规':   {'font-weight': 'normal', 'font-style': 'normal'},
@@ -95,17 +95,17 @@ $(() => {
   });
 
   $statusBar.init();
-  $statusBar.display(np.bShowStatusBar === 'true');
-  $statusBar.display(np.bWrap === 'false');
+  $statusBar.display(np.bShowStatusBar === 'false');
+  $statusBar.display(np.bWrap === 'true');
 
   $menubar.checked(2, 0, np.bWrap === 'true');
-  $menubar.checked(3, 0, np.bShowStatusBar === 'true');
+  $menubar.checked(3, 0, np.bShowStatusBar === 'false');
   $menubar.enabled(3, 0, np.bWrap === 'false');
 
   let $app = $('body');
 
   $app.click(() => {
-    $menubar.hideMenu();
+    //$menubar.hideMenu();
     $editor.focus();
   });
 });

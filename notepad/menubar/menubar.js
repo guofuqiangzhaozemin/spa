@@ -1,14 +1,11 @@
-/* exported $menubar*/
+
 let $menubar = (() => {
   let $bar = $('<div class="notepad-menubar"></div>');
 
-  let menuData,           // 所有菜单数据
-      menus = [];         // 存放五个下拉菜单的 DOM 对象
+  let menuData,
+      menus = [];
 
-  /* 下拉菜单是否展开，没有展开为：-1
-   * 展开为：n，n 代表展开的是第几个菜单
-   * 0 是文件菜单，1 是编辑菜单，2 是格式菜单
-   * 3 是查看菜单，4 是帮助菜单 */
+  
   let active = -1;
 
   let createMenuTitle = () => {
@@ -53,7 +50,7 @@ let $menubar = (() => {
     $bar.append($titles);
   };
 
-  let createMenus = () => {
+  let createMenus=()=>{
     for(let i=0; i<menuData.length; i++) {
       let $menus = $('<ul class="menus"></ul>'),
           items = menuData[i].menuItems;
@@ -81,19 +78,17 @@ let $menubar = (() => {
         if(!items[j].enabled) $menu.addClass('disabled');
 
         $menus.append($menu);
-
-        $menu.click((e) => {
-          e.stopPropagation();
-
-          if($(e.target).hasClass('disabled')) return;
-
-          let i = e.target.dataset.x, j = e.target.dataset.y;
-
-          menus[i].css({display: 'none'});
-          active = -1;
-
-          menuData[i].menuItems[j].handler();
-        });
+        if(items[j].title === '字体(F)...' || items[j].title === '查找(F)...' || items[j].title === '状态栏(S)'){
+          $menu.click((e)=>{
+            e.stopPropagation();
+            if($(e.target).hasClass('disabled')) return;
+            let i = e.target.dataset.x,
+                j = e.target.dataset.y;
+            menuData[i].menuItems[j].handler();
+            menus[i].css({display:'none'});
+            active = -1;
+          })
+        }
       }
 
       $menus.css({
@@ -107,13 +102,6 @@ let $menubar = (() => {
     }
   };
 
-  /**
-   * 设置菜单项是否为勾选状态
-   *
-   * @param row [0-4] 代表文件、编辑、格式、查看、帮助五个菜单栏
-   * @param col 代表第几个下拉菜单项
-   * @param isEnabled true 为勾选，false 为取消勾选
-   */
   let checked = (row, col, isChecked) => {
     let menuItem = menus[row].find('.menu-item')[col];
 
@@ -124,13 +112,6 @@ let $menubar = (() => {
     }
   };
 
-  /**
-   * 设置菜单项为启用或禁用状态
-   *
-   * @param row [0-4] 代表文件、编辑、格式、查看、帮助五个菜单栏
-   * @param col 代表第几个下拉菜单项
-   * @param isEnabled true 为启用，false 为禁用
-   */
   let enabled = (row, col, isEnabled) => {
     let menuItem = menus[row].find('.menu-item')[col];
 
@@ -151,12 +132,14 @@ let $menubar = (() => {
 
   let show = (data) => {
     menuData = data;
+    init();
+  };
+  let init=()=>{
     createMenuTitle();
     createMenus();
 
     $('body').append($bar);
   };
-
   return {
     show,
     checked,
