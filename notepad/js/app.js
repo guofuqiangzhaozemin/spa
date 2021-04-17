@@ -105,7 +105,7 @@ $(() => {
   let $app = $('body');
 
   $app.click(() => {
-    //$menubar.hideMenu();
+    $menubar.hideMenu();
     $editor.focus();
   });
 });
