@@ -1,58 +1,19 @@
-/*
- * Notepad 主程序
- * wangding 408542507@qq.com 2018
- */
 
-let np = {};                // Notepad 主程序对象
+let np = {};
 
 np.config = {
   'appContainer': '.notepad-app'
 };
 
-np.bShowStatusBar = localStorage.getItem('bShowStatusBar') || false;   // 是否显示状态栏
-np.bWrap          = localStorage.getItem('bWrap') || false;            // 是否换行
-np.fontFamily     = localStorage.getItem('fontFamily') || 'Arial';     // 默认字体
-np.fontStyle      = localStorage.getItem('fontStyle') || '常规';       // 默认字体样式
-np.fontSize       = localStorage.getItem('fontSize') || '16';          // 默认字体大小：16pt
+np.bShowStatusBar = localStorage.getItem('bShowStatusBar') || false;
+np.bWrap          = localStorage.getItem('bWrap') || false;
+np.fontFamily     = localStorage.getItem('fontFamily') || 'Arial';
+np.fontStyle      = localStorage.getItem('fontStyle') || '常规';
+np.fontSize       = localStorage.getItem('fontSize') || '16';
 
-np.fileName       = '无标题';   // 默认文件名
-np.hasChanged     = false;      // 文档是否发生变化
+np.fileName       = '无标题';
+np.hasChanged     = false;
 
-/*np.saveFile = () => {
-  const a = document.createElement('a'),
-        c = $editor.getContent(),
-        b = new Blob([c], { type: 'plain/text' });
-
-  a.href = URL.createObjectURL(b);
-  a.download = np.fileName + '.txt';
-  a.click();
-  URL.revokeObjectURL(a.href);
-};
-
-np.openFile = () => {
-  const dom = document.createElement('input');
-  dom.type = 'file';
-  dom.accept = '.txt';
-  dom.click();
-
-  dom.onchange = () => {
-    let reader = new FileReader();
-    reader.readAsText(dom.files[0]);
-
-    let fileName = dom.files[0].name.split('.')[0];
-    $('title').text(fileName + ' - 记事本');
-    np.fileName = fileName;
-
-    reader.onloadend = (e) => $editor.setContent(e.currentTarget.result);
-  };
-};
-
-np.newFile = () => {
-  $editor.newFile();
-  $('title').text('无标题 - 记事本');
-  np.hasChanged = false;
-};
-*/
 np.setFontStyle = (item, style) => {
   let conf = {
     '常规':   {'font-weight': 'normal', 'font-style': 'normal'},
@@ -100,12 +61,11 @@ $(() => {
 
   $menubar.checked(2, 0, np.bWrap === 'true');
   $menubar.checked(3, 0, np.bShowStatusBar === 'false');
-  $menubar.enabled(3, 0, np.bWrap === 'false');
+  $menubar.enabled(2, 0, np.bWrap === 'false');
 
   let $app = $('body');
 
   $app.click(() => {
-    $menubar.hideMenu();
     $editor.focus();
   });
 });

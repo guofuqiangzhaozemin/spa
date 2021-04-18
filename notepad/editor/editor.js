@@ -45,7 +45,7 @@ let $editor = (() => {
 
   $textArea.mousedown(() => bSelect = true);
   $textArea.mouseup(() => bSelect = false);
-  $textArea.mousemove(() => { if(bSelect) cfg.posHandler(getRow(), getCol()); });
+  $textArea.mousemove(() => { if(bSelect) cfg.posHandler(getRow(), geCol()); });
   $textArea.click(() => cfg.posHandler(getRow(), getCol()));
 
   let getCol = () => {
@@ -114,23 +114,12 @@ let $editor = (() => {
     cfg.posHandler(getRow(), getCol());
   };
 
- let bingSearch = () => {
-    let start = $textArea[0].selectionStart,
-        end   = $textArea[0].selectionEnd;
-
-    if(start === end) {
-      window.open('https://cn.bing.com/', '_blank');
-    } else {
-      let subStr = $textArea.val().substring(start, end);
-      window.open('https://cn.bing.com/search?q=' + subStr, '_blank');
-    }
-  };
 
   let search = (srch) => {
     let content  = $textArea.val(),
         srchCtnt = srch.content;
 
-    if(!srch.capitalSense) { // 不区分大小写，把所有字符串都转换成小写
+    if(!srch.capitalSense) { 
       content  = content.toLowerCase();
       srchCtnt = srchCtnt.toLowerCase();
     }
@@ -138,9 +127,9 @@ let $editor = (() => {
     let start = $textArea[0].selectionEnd;
     let result;
 
-    if(srch.direction === 'down') { // 查找方向，向下
+    if(srch.direction === 'down') { 
       result = content.indexOf(srchCtnt, start);
-    } else { // srch.direction === 'up'，查找方向，向上
+    } else { 
       let subStr = content.substr(0, $textArea[0].selectionStart);
       result = subStr.lastIndexOf(srchCtnt);
     }
@@ -182,7 +171,6 @@ let $editor = (() => {
     selectAll,
     insertDataTime,
     gotoLn,
-    bingSearch,
     search,
     setFont
   };
